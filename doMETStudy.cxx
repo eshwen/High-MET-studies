@@ -292,12 +292,12 @@ void doMETStudy(){
         // Retrieve MET, ETT from emulator tree
 
         for (unsigned int c = 0; c < l1emu_->nSums; ++c) {
-          if( l1emu_->sumBx[c] != 0 ) continue;
-          if( l1emu_->sumType[c] == L1Analysis::kTotalEt ) l1EttEmu = l1emu_->sumEt[c];
-          else if( l1emu_->sumType[c] == L1Analysis::kMissingEt ) {
-              l1MetEmu = l1emu_->sumEt[c];
-              l1MetPhiEmu = l1emu_->sumIPhi[c];
-          }
+            if( l1emu_->sumBx[c] != 0 ) continue;
+            if( l1emu_->sumType[c] == L1Analysis::kTotalEt ) l1EttEmu = l1emu_->sumEt[c];
+            else if( l1emu_->sumType[c] == L1Analysis::kMissingEt ) {
+                l1MetEmu = l1emu_->sumEt[c];
+                l1MetPhiEmu = l1emu_->sumIPhi[c];
+            }
         }
 
         // Only loop over events with MET > 100 GeV and set overflow events (MET > 200 GeV) to 200 GeV
