@@ -334,6 +334,18 @@ void doMETStudy(){
         hEttScalEcaltotal->Fill(l1EttECALEmu, l1EttEmu);
         hEttScalHcaltotal->Fill(l1EttHCALEmu, l1EttEmu);
 
+        // Fill MET scalar histos
+        hMetScal->Fill(l1MetEmu);
+        hMetScalEcalHcal->Fill(l1MetECALEmu, l1MetHCALEmu);
+        hMetScalEcaltotal->Fill(l1MetECALEmu, l1MetEmu);
+        hMetScalHcaltotal->Fill(l1MetHCALEmu, l1MetEmu);
+
+        // Fill MET phi histos
+        hMetPhi->Fill(l1MetPhiEmu);
+        hMetPhiEcalHcal->Fill(l1MetPhiECALEmu, l1MetPhiHCALEmu);
+        hMetPhiEcalTotal->Fill(l1MetPhiECALEmu, l1MetPhiEmu);
+        hMetPhiHcalTotal->Fill(l1MetPhiHCALEmu, l1MetPhiEmu);
+
         // Initialise histograms in arrays for filling with individual event info
         if (N_INDIV_EVENTS > nPassing) {
             ostringstream hcalHistNameStream;
@@ -442,18 +454,6 @@ void doMETStudy(){
             hTowTPETEta->Fill(towEtaemu, towEtemu);
 
         }
-
-        // Fill MET scalar histos
-        hMetScal->Fill(l1MetEmu);
-        hMetScalEcalHcal->Fill(l1MetECALEmu, l1MetHCALEmu);
-        hMetScalEcaltotal->Fill(l1MetECALEmu, l1MetEmu);
-        hMetScalHcaltotal->Fill(l1MetHCALEmu, l1MetEmu);
-
-        // Fill MET phi histos
-        hMetPhi->Fill(l1MetPhiEmu);
-        hMetPhiEcalHcal->Fill(l1MetPhiECALEmu, l1MetPhiHCALEmu);
-        hMetPhiEcalTotal->Fill(l1MetPhiECALEmu, l1MetPhiEmu);
-        hMetPhiHcalTotal->Fill(l1MetPhiHCALEmu, l1MetPhiEmu);
 
       }
 
