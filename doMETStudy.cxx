@@ -652,17 +652,17 @@ void doMETStudy(){
       // Plot ETT scalar 1D
       hEttScal->Scale(nPassing);
       formatPlot1D(hEttScal, towerColour);
-      canvas->SaveAs("Plots/EttScal.pdf");
+      canvas->SaveAs("./Plots/EttScal.pdf");
 
       // Plot ETT scalar 2D
       formatPlot2D(hEttScalEcalHcal);
-      canvas->SaveAs("Plots/EttScalEcalHcal.pdf");
+      canvas->SaveAs("./Plots/EttScalEcalHcal.pdf");
 
       formatPlot2D(hEttScalEcaltotal);
-      canvas->SaveAs("Plots/EttScalEcaltotal.pdf");
+      canvas->SaveAs("./Plots/EttScalEcaltotal.pdf");
 
       formatPlot2D(hEttScalHcaltotal);
-      canvas->SaveAs("Plots/EttScalEHcaltotal.pdf");
+      canvas->SaveAs("./Plots/EttScalEHcaltotal.pdf");
 
       // Plot histograms for individual events
       for (int x = 0; x < min(N_INDIV_EVENTS, nPassing); ++x) {
