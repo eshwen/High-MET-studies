@@ -22,6 +22,9 @@
 #define N_IETA_BINS 80
 #define N_IPHI_BINS 72
 #define N_ETT_BINS 50
+#define IETA_MIN -40.0
+#define IETA_MAX 40.0
+#define IPHI_MAX 72.0
 #define ETT_RANGE 1000
 #define N_INDIV_EVENTS 20
 
@@ -162,62 +165,62 @@ void doMETStudy(){
 
   // Tower hists
   TH1D* hAllTowEt = new TH1D("towerEt", ";Tower E_{T}; # Towers", 40, -0.5, 39.5);
-  TH1D* hAllTowEta = new TH1D("towerEta", "Towers vs iEta;iEta; # Towers", N_IETA_BINS, -40., 40.);
-  TH1D* hTowTPETEta = new TH1D("towerTPETEta", "Average tower TP E_{T} vs. iEta; iEta; Average tower TP E_{T}", N_IETA_BINS, -40., 40.);
+  TH1D* hAllTowEta = new TH1D("towerEta", "Towers vs iEta;iEta; # Towers", N_IETA_BINS, IETA_MIN, IETA_MAX);
+  TH1D* hTowTPETEta = new TH1D("towerTPETEta", "Average tower TP E_{T} vs. iEta; iEta; Average tower TP E_{T}", N_IETA_BINS, IETA_MIN, IETA_MAX);
 
-  TH1D* hTowPhiB = new TH1D("towerPhiB", "Towers vs iPhi in Barrel;iPhi; # Towers", N_IPHI_BINS, 0., 72.);
-  TH1D* hTowPhiE = new TH1D("towerPhiE", "Towers vs iPhi in End cap;iPhi; # Towers", N_IPHI_BINS, 0., 72.);
+  TH1D* hTowPhiB = new TH1D("towerPhiB", "Towers vs iPhi in Barrel;iPhi; # Towers", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hTowPhiE = new TH1D("towerPhiE", "Towers vs iPhi in End cap;iPhi; # Towers", N_IPHI_BINS, 0., IPHI_MAX);
 
-  TH1D* hTowTPETphiB = new TH1D("towerTPETPhiB", "Average tower TP E_{T} vs. iPhi in Barrel;iPhi; Average tower TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH1D* hTowTPETphiE = new TH1D("towerTPETPhiE", "Average tower TP E_{T} vs. iPhi in End cap;iPhi; Average tower TP E_{T}", N_IPHI_BINS, 0., 72.);
+  TH1D* hTowTPETphiB = new TH1D("towerTPETPhiB", "Average tower TP E_{T} vs. iPhi in Barrel;iPhi; Average tower TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hTowTPETphiE = new TH1D("towerTPETPhiE", "Average tower TP E_{T} vs. iPhi in End cap;iPhi; Average tower TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
  
   // HCAL hists
   TH1D* hHCALTPEt = new TH1D("hcalTPEt", "HCAL;TP E_{T}; # TPs / Event", 20, 0., 200.);
-  TH1D* hHCALTPEta = new TH1D("hcalTPEta", "HCAL # TPs vs iEta;iEta; # TPs / Event", N_IETA_BINS, -40., 40.);
-  TH1D* hHCALTPETEta = new TH1D("hcalTPETEta", "Average HCAL TP E_{T} vs. iEta; iEta; Average HCAL TP E_{T}", N_IETA_BINS, -40., 40.);
+  TH1D* hHCALTPEta = new TH1D("hcalTPEta", "HCAL # TPs vs iEta;iEta; # TPs / Event", N_IETA_BINS, IETA_MIN, IETA_MAX);
+  TH1D* hHCALTPETEta = new TH1D("hcalTPETEta", "Average HCAL TP E_{T} vs. iEta; iEta; Average HCAL TP E_{T}", N_IETA_BINS, IETA_MIN, IETA_MAX);
  
-  TH1D* hHCALTPPhi = new TH1D("hcalTPPhi", "HCAL # TPs vs iPhi;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPPhiHB = new TH1D("hcalTPPhiHB", "HCAL # TPs vs iPhi in HB;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPPhiHE = new TH1D("hcalTPPhiHE", "HCAL # TPs vs iPhi in HE;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPPhiHF = new TH1D("hcalTPPhiHF", "HCAL # TPs vs iPhi in HF;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
+  TH1D* hHCALTPPhi = new TH1D("hcalTPPhi", "HCAL # TPs vs iPhi;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPPhiHB = new TH1D("hcalTPPhiHB", "HCAL # TPs vs iPhi in HB;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPPhiHE = new TH1D("hcalTPPhiHE", "HCAL # TPs vs iPhi in HE;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPPhiHF = new TH1D("hcalTPPhiHF", "HCAL # TPs vs iPhi in HF;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
 
-  TH1D* hHCALTPETphi = new TH1D("hcalTPETPhi", "Average HCAL TP E_{T} vs. iPhi;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPETphiHB = new TH1D("hcalTPETPhiHB", "Average HCAL TP E_{T} vs. iPhi in HB;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPETphiHE = new TH1D("hcalTPETPhiHE", "Average HCAL TP E_{T} vs. iPhi in HE;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPETphiHF = new TH1D("hcalTPETPhiHF", "Average HCAL TP E_{T} vs. iPhi in HF;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., 72.);
+  TH1D* hHCALTPETphi = new TH1D("hcalTPETPhi", "Average HCAL TP E_{T} vs. iPhi;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPETphiHB = new TH1D("hcalTPETPhiHB", "Average HCAL TP E_{T} vs. iPhi in HB;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPETphiHE = new TH1D("hcalTPETPhiHE", "Average HCAL TP E_{T} vs. iPhi in HE;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPETphiHF = new TH1D("hcalTPETPhiHF", "Average HCAL TP E_{T} vs. iPhi in HF;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
 
-  TH2D* hHCALTPEtaPhi = new TH2D("hcaletaphi", "HCAL TP occupancy;TP iEta;TP iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, 0., 72.);
-  TH2D* hHCALavgTPETEtaPhi = new TH2D("hcalavgtpetetaphi", "HCAL average TP E_{T} per bin;TP iEta;TP iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, .0, 72.);
+  TH2D* hHCALTPEtaPhi = new TH2D("hcaletaphi", "HCAL TP occupancy;TP iEta;TP iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, 0., IPHI_MAX);
+  TH2D* hHCALavgTPETEtaPhi = new TH2D("hcalavgtpetetaphi", "HCAL average TP E_{T} per bin;TP iEta;TP iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, .0, IPHI_MAX);
   
-  TH1D* hHCALTPPhiforTT28 = new TH1D("hcaltpphiTT28", "HCAL # TPs vs iPhi for TT28;iPhi;# TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hHCALTPETphiforTT28 = new TH1D("hcaltpetphiTT28", "Average HCAL TP E_{T} vs iPhi for TT28;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH2D* hHCALavgTPETforTT28 = new TH2D("hcalavgetTT28", "HCAL average TP E_{T} per bin for TT28;TP iEta;TP iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, .0, 72.);
+  TH1D* hHCALTPPhiforTT28 = new TH1D("hcaltpphiTT28", "HCAL # TPs vs iPhi for TT28;iPhi;# TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hHCALTPETphiforTT28 = new TH1D("hcaltpetphiTT28", "Average HCAL TP E_{T} vs iPhi for TT28;iPhi; Average HCAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH2D* hHCALavgTPETforTT28 = new TH2D("hcalavgetTT28", "HCAL average TP E_{T} per bin for TT28;TP iEta;TP iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, .0, IPHI_MAX);
 
   // ECAL hists
   TH1D* hECALTPEt = new TH1D("ecalTPEt", "ECAL;TP E_{T}; # TPs / Event", 20, 0., 200.);
-  TH1D* hECALTPEta = new TH1D("ecalTPEta", "ECAL # TPs vs iEta;iEta; # TPs / Event", N_IETA_BINS, -40., 40.);
-  TH1D* hECALTPETEta = new TH1D("ecalTPETEta", "Average ECAL TP E_{T} vs. iEta; iEta; Average ECAL TP E_{T}", N_IETA_BINS, -40., 40.);
+  TH1D* hECALTPEta = new TH1D("ecalTPEta", "ECAL # TPs vs iEta;iEta; # TPs / Event", N_IETA_BINS, IETA_MIN, IETA_MAX);
+  TH1D* hECALTPETEta = new TH1D("ecalTPETEta", "Average ECAL TP E_{T} vs. iEta; iEta; Average ECAL TP E_{T}", N_IETA_BINS, IETA_MIN, IETA_MAX);
 
-  TH1D* hECALTPPhi = new TH1D("ecalTPPhi", "ECAL # TPs vs iPhi;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hECALTPPhiEB = new TH1D("ecalTPPhiEB", "ECAL # TPs vs iPhi in EB;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hECALTPPhiEE = new TH1D("ecalTPPhiEE", "ECAL # TPs vs iPhi in EE;iPhi; # TPs / Event", N_IPHI_BINS, 0., 72.);
+  TH1D* hECALTPPhi = new TH1D("ecalTPPhi", "ECAL # TPs vs iPhi;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hECALTPPhiEB = new TH1D("ecalTPPhiEB", "ECAL # TPs vs iPhi in EB;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hECALTPPhiEE = new TH1D("ecalTPPhiEE", "ECAL # TPs vs iPhi in EE;iPhi; # TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
   
-  TH1D* hECALTPETphi = new TH1D("ecalTPETPhi", "Average ECAL TP E_{T} vs. iPhi;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH1D* hECALTPETphiEB = new TH1D("ecalTPETPhiEB", "Average ECAL TP E_{T} vs. iPhi in EB;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH1D* hECALTPETphiEE = new TH1D("ecalTPETPhiEE", "Average ECAL TP E_{T} vs. iPhi in EE;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., 72.);
+  TH1D* hECALTPETphi = new TH1D("ecalTPETPhi", "Average ECAL TP E_{T} vs. iPhi;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hECALTPETphiEB = new TH1D("ecalTPETPhiEB", "Average ECAL TP E_{T} vs. iPhi in EB;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hECALTPETphiEE = new TH1D("ecalTPETPhiEE", "Average ECAL TP E_{T} vs. iPhi in EE;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
   
-  TH2D* hECALTPEtaPhi = new TH2D("ecaletaphi", "ECAL TP occupancy;TP iEta;TP iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, .0, 72.);
-  TH2D* hECALavgTPETEtaPhi = new TH2D("ecalavgtpetetaphi", "ECAL average TP E_{T} per bin;TP iEta;TP iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, .0, 72.);
+  TH2D* hECALTPEtaPhi = new TH2D("ecaletaphi", "ECAL TP occupancy;TP iEta;TP iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, .0, IPHI_MAX);
+  TH2D* hECALavgTPETEtaPhi = new TH2D("ecalavgtpetetaphi", "ECAL average TP E_{T} per bin;TP iEta;TP iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, .0, IPHI_MAX);
 
-  TH1D* hECALTPPhiforTT28 = new TH1D("ecaltpphiTT28", "ECAL # TPs vs iPhi for TT28;iPhi;# TPs / Event", N_IPHI_BINS, 0., 72.);
-  TH1D* hECALTPETphiforTT28 = new TH1D("ecaltpetphiTT28", "Average ECAL TP E_{T} vs iPhi for TT28;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., 72.);
-  TH2D* hECALavgTPETforTT28 = new TH2D("ecalavgetTT28", "ECAL average TP E_{T} per bin for TT28;TP iEta;TP iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, .0, 72.);
+  TH1D* hECALTPPhiforTT28 = new TH1D("ecaltpphiTT28", "ECAL # TPs vs iPhi for TT28;iPhi;# TPs / Event", N_IPHI_BINS, 0., IPHI_MAX);
+  TH1D* hECALTPETphiforTT28 = new TH1D("ecaltpetphiTT28", "Average ECAL TP E_{T} vs iPhi for TT28;iPhi; Average ECAL TP E_{T}", N_IPHI_BINS, 0., IPHI_MAX);
+  TH2D* hECALavgTPETforTT28 = new TH2D("ecalavgetTT28", "ECAL average TP E_{T} per bin for TT28;TP iEta;TP iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, .0, IPHI_MAX);
   
   // MET hists
-  TH1D* hMetPhi = new TH1D("hMetPhi", ";MET Phi;# Events", N_IPHI_BINS, 0., 144.); // each bin (and therefore range) is 2*iPhi
-  TH2D* hMetPhiEcalHcal = new TH2D("hMetPhiEcalHcal", "MET Phi ECAL vs HCAL;MET Phi ECAL;MET Phi HCAL", N_IPHI_BINS, 0., 144., N_IPHI_BINS, 0., 144.);
-  TH2D* hMetPhiEcalTotal = new TH2D("hMetPhiEcalTotal", "MET Phi ECAL vs total;MET Phi ECAL;MET Phi total", N_IPHI_BINS, 0., 144., N_IPHI_BINS, 0., 144.);
-  TH2D* hMetPhiHcalTotal = new TH2D("hMetPhiHcalTotal", "MET Phi HCAL vs total;MET Phi HCAL;MET Phi total", N_IPHI_BINS, 0., 144., N_IPHI_BINS, 0., 144.);
+  TH1D* hMetPhi = new TH1D("hMetPhi", ";MET Phi;# Events", N_IPHI_BINS, 0., 2*IPHI_MAX); // each bin (and therefore range) is 2*iPhi
+  TH2D* hMetPhiEcalHcal = new TH2D("hMetPhiEcalHcal", "MET Phi ECAL vs HCAL;MET Phi ECAL;MET Phi HCAL", N_IPHI_BINS, 0., 2*IPHI_MAX, N_IPHI_BINS, 0., 2*IPHI_MAX);
+  TH2D* hMetPhiEcalTotal = new TH2D("hMetPhiEcalTotal", "MET Phi ECAL vs total;MET Phi ECAL;MET Phi total", N_IPHI_BINS, 0., 2*IPHI_MAX, N_IPHI_BINS, 0., 2*IPHI_MAX);
+  TH2D* hMetPhiHcalTotal = new TH2D("hMetPhiHcalTotal", "MET Phi HCAL vs total;MET Phi HCAL;MET Phi total", N_IPHI_BINS, 0., 2*IPHI_MAX, N_IPHI_BINS, 0., 2*IPHI_MAX);
 
   TH1D* hMetScal = new TH1D("hMetScal", ";MET scalar sum; # Events", 20, 100., 200);
   TH2D* hMetScalEcalHcal = new TH2D("hMetScalEcalHcal", "MET scalar ECAL vs HCAL;MET scalar ECAL;MET scalar HCAL", 40, 0., 200, 40, 0., 200);
@@ -289,8 +292,8 @@ void doMETStudy(){
     for (unsigned int c = 0; c < l1emu_->nSums; ++c) {
       if( l1emu_->sumBx[c] != 0 ) continue;
       if( l1emu_->sumType[c] == L1Analysis::kTotalEt ) l1EttEmu = l1emu_->sumEt[c];
-      if( l1emu_->sumType[c] == L1Analysis::kMissingEt ) {
-	      l1MetEmu = l1emu_->sumEt[c];
+      else if( l1emu_->sumType[c] == L1Analysis::kMissingEt ) {
+	l1MetEmu = l1emu_->sumEt[c];
         l1MetPhiEmu = l1emu_->sumIPhi[c];
       }
     }
@@ -333,11 +336,11 @@ void doMETStudy(){
     if (N_INDIV_EVENTS > nPassing) {
       ostringstream hcalHistNameStream;
       hcalHistNameStream << "hcalTPETetaphiindiv" << nPassing;
-      hHCALTPETEtaPhiIndiv[(int) nPassing - 1] = new TH2D(hcalHistNameStream.str().c_str(), "HCAL TP E_{T} for single event;iEta;iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, 0., 72.);
+      hHCALTPETEtaPhiIndiv[(int) nPassing - 1] = new TH2D(hcalHistNameStream.str().c_str(), "HCAL TP E_{T} for single event;iEta;iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, 0., IPHI_MAX);
     
       ostringstream ecalHistNameStream;
       ecalHistNameStream << "ecalTPETetaphiindiv" << nPassing;
-      hECALTPETEtaPhiIndiv[(int) nPassing - 1] = new TH2D(ecalHistNameStream.str().c_str(), "ECAL TP E_{T} for single event;iEta;iPhi", N_IETA_BINS, -40., 40., N_IPHI_BINS, 0., 72.);
+      hECALTPETEtaPhiIndiv[(int) nPassing - 1] = new TH2D(ecalHistNameStream.str().c_str(), "ECAL TP E_{T} for single event;iEta;iPhi", N_IETA_BINS, IETA_MIN, IETA_MAX, N_IPHI_BINS, 0., IPHI_MAX);
     }
 
     // Retrieve HCAL objects from emulator tree
