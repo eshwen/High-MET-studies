@@ -60,6 +60,9 @@ void doMETStudy(){
     vector<string> hcal;
     vector<string> ecal;
 
+    // Number of entries to run over
+    int nEvents;
+
     bool isTest = false;
 
     // Load files
@@ -107,6 +110,8 @@ void doMETStudy(){
     //  ecal.push_back("root://eoscms.cern.ch//eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/safarzad/2017/ZeroBias/HighPU/noRECO-l1t-v96p27_ECAL/ZeroBias8b4e8/crab_noRECO-l1t-v96p27_ECAL__8b4e8/170922_105208/0000/L1Ntuple_*.root");
     //  ecal.push_back("root://eoscms.cern.ch//eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/safarzad/2017/ZeroBias/HighPU/noRECO-l1t-v96p27_ECAL/ZeroBias8b4e9/crab_noRECO-l1t-v96p27_ECAL__8b4e9/170922_105232/0000/L1Ntuple_*.root");
     //  ecal.push_back("root://eoscms.cern.ch//eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/safarzad/2017/ZeroBias/HighPU/noRECO-l1t-v96p27_ECAL/ZeroBias8b4e10/crab_noRECO-l1t-v96p27_ECAL__8b4e10/170922_105256/0000/L1Ntuple_*.root");
+
+    nEvents = 1500000;
     }
 
     else {
@@ -114,6 +119,8 @@ void doMETStudy(){
     towers.push_back("root://eoscms.cern.ch//eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/safarzad/2017/ZeroBias/HighPU/noRECO-l1t-v96p27_NoPUS/ZeroBias8b4e1/crab_noRECO-l1t-v96p27_NoPUS__8b4e1/170915_101410/0000/L1Ntuple_6.root");
     hcal.push_back("root://eoscms.cern.ch//eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/safarzad/2017/ZeroBias/HighPU/noRECO-l1t-v96p27_HCAL/ZeroBias8b4e1/crab_noRECO-l1t-v96p27_HCAL__8b4e1/170922_121415/0000/L1Ntuple_6.root");
     ecal.push_back("root://eoscms.cern.ch//eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/safarzad/2017/ZeroBias/HighPU/noRECO-l1t-v96p27_ECAL/ZeroBias8b4e1/crab_noRECO-l1t-v96p27_ECAL__8b4e1/170922_105053/0000/L1Ntuple_6.root");
+
+    nEvents = 1000;
     }
 
     cout << "Loading up the TChain..." << endl;
@@ -126,7 +133,7 @@ void doMETStudy(){
 
     int minFiles = std::min( std::min( towers.size(), hcal.size() ), ecal.size() );
 
-    for(uint i = 0; i < minFiles; ++i) {
+    for (uint i = 0; i < minFiles; ++i) {
         eventTree->Add(towers[i].c_str());
         treeL1Towemu->Add(towers[i].c_str());
         treeTPemu->Add(towers[i].c_str());
@@ -238,11 +245,6 @@ void doMETStudy(){
     TH2D* hHCALTPETEtaPhiIndiv[N_INDIV_EVENTS] = { NULL };
 
     // Main loop
-
-    // Number of entries to run over
-    int nEvents;
-    if (isTest == true) nEvents = 1000;
-    else nEvents = 1500000;
 
     for (Long64_t jentry = 0; jentry < nEvents; ++jentry) {
         // initialise some variables
