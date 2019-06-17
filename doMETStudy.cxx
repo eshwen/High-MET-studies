@@ -54,8 +54,6 @@ void formatPlot2D(TH2D* plot2d){
 //main plotting function
 void doMETStudy(){
 
-    std::cout << "Running doMETStudy.cxx..." << std::endl;
-
     vector<string> towers;
     vector<string> hcal;
     vector<string> ecal;
