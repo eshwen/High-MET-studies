@@ -7,7 +7,7 @@ else
     export SCRAM_ARCH=slc6_amd64_gcc630
 fi
 cmsrel CMSSW_9_2_8  # works on both SLC6 and CentOS7 machines
-pushd CMSSW_9_2_8/src
+pushd CMSSW_9_2_8/src >/dev/null 2>&1
 cmsenv
 scram b
-popd
+popd >/dev/null 2>&1
